@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int factorial(int n){
+    int result;
+    if(n==1){
+        return n;
+    }
+    else{
+        result=n*factorial(n-1);
+    }
+    return result;
+}
+
+int nCr(int n, int r){
+    int nenom= factorial(n);
+    int denom= factorial(r)*factorial(n-r);
+    int result= nenom/denom;
+    return result;
+}
+
+int main() {
+    int n;
+    int r;
+    
+    cout << "Enter the n: " << endl;
+    cin >> n;
+    cout << "Enter the r: " << endl;
+    cin >> r;
+    
+    int result= nCr(n,r);
+    
+    cout << "nCr value: " << result << endl;
+    return 0;
+}
