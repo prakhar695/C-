@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+int firstOcc(int arr[], int size, int key){
+    int start = 0;
+    int end = size - 1;
+    int ans = -1;
+
+    while(start <= end){
+        int mid = start + (end - start) / 2;
+
+        if(arr[mid] == key){
+            ans = mid;
+            end = mid - 1;   // go left
+        }
+        else if(arr[mid] < key){
+            start = mid + 1;
+        }
+        else{
+            end = mid - 1;
+        }
+    }
+    return ans;
+}
+
+int lastOcc(int arr[], int size, int key){
+    int start = 0;
+    int end = size - 1;
+    int ans = -1;
+
+    while(start <= end){
+        int mid = start + (end - start) / 2;
+
+        if(arr[mid] == key){
+            ans = mid;
+            start = mid + 1;  // go right
+        }
+        else if(arr[mid] < key){
+            start = mid + 1;
+        }
+        else{
+            end = mid - 1;
+        }
+    }
+    return ans;
+}
+
+int main(){
+    int evens[] = {2,4,6,6,8,10};
+        
+    cout << "First Occurence of 6 is at index: " 
+         << firstOcc(evens, 6, 6) << endl;
+
+    cout << "Last Occurence of 6 is at index: " 
+         << lastOcc(evens, 6, 6) << endl;    
+
+    return 0;
+}
